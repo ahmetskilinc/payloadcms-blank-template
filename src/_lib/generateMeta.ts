@@ -6,10 +6,6 @@ export const generateMeta = (args: { doc: Page }): Metadata => {
 	const { doc } = args || {};
 
 	return {
-		title: doc?.title ? `${doc?.title} | Ahmet Kilinc` : "Ahmet Kilinc",
-		// openGraph: mergeOpenGraph({
-		// 	title: doc?.title ? `${doc?.title} | Ahmet Kilinc` : "Ahmet Kilinc",
-		// 	url: Array.isArray(doc.slug) ? doc.slug.join("/") : "/",
-		// }),
+		title: doc?.title ? `${doc?.title}` : null,
 	};
 };

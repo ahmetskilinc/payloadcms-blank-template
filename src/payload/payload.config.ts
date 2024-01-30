@@ -17,9 +17,6 @@ dotenv.config({
 export default buildConfig({
 	admin: {
 		user: Users.slug,
-		meta: {
-			titleSuffix: "- kılınç.digital",
-		},
 		bundler: webpackBundler(),
 		webpack: (config) => ({
 			...config,
