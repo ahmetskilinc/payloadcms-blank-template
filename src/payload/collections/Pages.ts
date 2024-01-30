@@ -1,5 +1,4 @@
 import { CollectionConfig } from "payload/types";
-import icon from "../fields/icon";
 import isPublished from "../fields/IsPublished";
 import slug from "../fields/slug";
 import lexicalEditor from "../fields/lexicalEditor";
@@ -25,7 +24,7 @@ const Pages: CollectionConfig = {
 					fields: [
 						{
 							type: "row",
-							fields: [slug, icon],
+							fields: [slug],
 						},
 						isPublished,
 					],
