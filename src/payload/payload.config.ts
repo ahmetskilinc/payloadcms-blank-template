@@ -28,6 +28,19 @@ export default buildConfig({
 				},
 			},
 		}),
+		livePreview: {
+			url: ({ data }) =>
+				`${process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000"}${data.page.slug}`,
+			collections: ["pages"],
+			breakpoints: [
+				{
+					label: "Mobile",
+					name: "mobile",
+					width: 375,
+					height: 667,
+				},
+			],
+		},
 	},
 	defaultDepth: 30,
 	editor: lexicalEditor({}),

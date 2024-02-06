@@ -22,6 +22,7 @@
 	"dependencies": {
 		"@payloadcms/bundler-webpack": "^1.0.6",
 		"@payloadcms/db-mongodb": "^1.4.0",
+		"@payloadcms/live-preview-react": "^0.2.0",
 		"@payloadcms/plugin-cloud": "^3.0.0",
 		"@payloadcms/plugin-seo": "^2.2.0",
 		"@payloadcms/richtext-lexical": "^0.5.2",

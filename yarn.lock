@@ -1790,6 +1790,18 @@
     eslint-plugin-react-hooks "4.6.0"
     eslint-plugin-regexp "1.15.0"
 
+"@payloadcms/live-preview-react@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@payloadcms/live-preview-react/-/live-preview-react-0.2.0.tgz#daf7b1c3338f51f2aa0ea2f5d1c3b8aeab303df7"
+  integrity sha512-ao7DN2GJFPoipw2cmt2M0tfwmUa0hIn3UxB5EaMv6RduMuOMQlG5hx5ouX3g5wPMcQpyvLwxCuuiQhj1nKMGhA==
+  dependencies:
+    "@payloadcms/live-preview" "^0.x"
+
+"@payloadcms/live-preview@^0.x":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@payloadcms/live-preview/-/live-preview-0.2.2.tgz#271e4a49bf21e5e46168f054f7306ea34b9232a1"
+  integrity sha512-FOcg/HOIzzESjoT4vXgM7Pjd+bODodZTKR/pEJWsjLtyARd6NfF3MNWS+tdlfa3TOZrdT8WnHBAKsKyREyE3og==
+
 "@payloadcms/plugin-cloud@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@payloadcms/plugin-cloud/-/plugin-cloud-3.0.0.tgz#3db7c4ad4bf3d3e42329bdf085136f89dea0df43"
