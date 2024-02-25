@@ -7,7 +7,7 @@ import { generateMeta } from "../../_lib/generateMeta";
 
 export const dynamic = "force-dynamic";
 
-export default async function Page({ params: { slug = "" } }: { params: { slug: string } }) {
+export default async function Page({ params: { slug = [""] } }: { params: { slug: string[] } }) {
 	const page = await fetchPage(slug);
 
 	if (!page) {
@@ -35,11 +35,11 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({
-	params: { slug = "" },
+	params: { slug = [""] },
 }: {
-	params: { slug: string };
+	params: { slug: string[] };
 }): Promise<Metadata> {
 	const page = await fetchPage(slug);
 
-	return generateMeta({ doc: page! });
+	return generateMeta({ doc: page });
 }

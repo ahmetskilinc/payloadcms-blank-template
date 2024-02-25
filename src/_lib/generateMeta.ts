@@ -6,6 +6,6 @@ export const generateMeta = (args: { doc: Page }): Metadata => {
 	const { doc } = args || {};
 
 	return {
-		title: doc?.title ? `${doc?.title}` : null,
+		title: doc?.title ? doc?.title : null,
 	};
 };

@@ -1,10 +1,8 @@
 import payload from "payload";
 import { Page } from "../payload/payload-types";
 
-export async function fetchPage(slug: string): Promise<Page | null> {
+export async function fetchPage(slug: string[]): Promise<Page | null> {
 	let page: Page | null = null;
-
-	console.log(slug);
 
 	try {
 		page = (
@@ -12,7 +10,7 @@ export async function fetchPage(slug: string): Promise<Page | null> {
 				collection: "pages",
 				where: {
 					"page.slug": {
-						equals: slug,
+						equals: slug.join("/") || "",
 					},
 				},
 			})
