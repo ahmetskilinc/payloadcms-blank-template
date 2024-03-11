@@ -10,9 +10,16 @@ const Pages: CollectionConfig = {
 		singular: "Page",
 		plural: "Pages",
 	},
-	access: {},
+	access: {
+		read: () => true,
+	},
 	admin: {
 		useAsTitle: "title",
+	},
+	versions: {
+		drafts: {
+			autosave: false,
+		},
 	},
 	timestamps: true,
 	fields: [

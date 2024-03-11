@@ -7,7 +7,15 @@ import Image from "next/image";
 import React from "react";
 import { Media, Page } from "../../payload/payload-types";
 import Block from "../RenderBlocks";
-import { IS_BOLD, IS_CODE, IS_ITALIC, IS_STRIKETHROUGH, IS_SUBSCRIPT, IS_SUPERSCRIPT, IS_UNDERLINE } from "./nodeFormat";
+import {
+	IS_BOLD,
+	IS_CODE,
+	IS_ITALIC,
+	IS_STRIKETHROUGH,
+	IS_SUBSCRIPT,
+	IS_SUPERSCRIPT,
+	IS_UNDERLINE,
+} from "./nodeFormat";
 
 export type CustomSerializedLexicalNode = SerializedLexicalNode & {
 	fields: any;
@@ -40,7 +48,12 @@ export function Serialize({ nodes }: Props): JSX.Element {
 			{nodes?.map((_node, index): JSX.Element | null => {
 				if (_node.type === "text") {
 					const node = _node as SerializedLexicalNode as SerializedTextNode;
-					let text = <span dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }} key={index} />;
+					let text = (
+						<span
+							dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }}
+							key={index}
+						/>
+					);
 					if (node.format & IS_BOLD) {
 						text = <strong key={index}>{text}</strong>;
 					}
@@ -96,21 +109,30 @@ export function Serialize({ nodes }: Props): JSX.Element {
 					const { language } = _node;
 
 					return (
-						<div key={index} className="w-full transition-colors ease-linear shadow-2xl">
+						<div
+							key={index}
+							className="w-full transition-colors ease-linear shadow-2xl"
+						>
 							<div className="w-full h-8 rounded-t-lg bg-slate-900 flex justify-start items-center space-x-1.5 px-4 mb-0">
 								<span className="w-3 h-3 border-2 border-transparent rounded-full bg-red-500"></span>
 								<span className="w-3 h-3 border-2 border-transparent rounded-full bg-yellow-500"></span>
 								<span className="w-3 h-3 border-2 border-transparent rounded-full bg-green-500"></span>
 							</div>
 							<div className="border-t-0 w-full rounded-b-lg mt-0">
-								<pre className={`m-0 my-0 mt-0 rounded-none rounded-b-lg language-${_node["language"]}`}>
+								<pre
+									className={`m-0 my-0 mt-0 rounded-none rounded-b-lg language-${_node["language"]}`}
+								>
 									<code className={`language-${_node["language"]}`}>
 										{_node["children"].map((child, index) => {
 											if (child.type === "code-highlight") {
 												return (
 													<span
 														key={`${index}-${child.mode}`}
-														className={`token${child.highlightType ? ` ${child.highlightType}` : ""}`}
+														className={`token${
+															child.highlightType
+																? ` ${child.highlightType}`
+																: ""
+														}`}
 													>
 														{child["text"]}
 													</span>
@@ -118,7 +140,11 @@ export function Serialize({ nodes }: Props): JSX.Element {
 											} else if (child.type === "linebreak") {
 												return <br key={`${index}-${child.mode}`} />;
 											} else if (child.type === "tab") {
-												return <span key={`${index}-${child.mode}`}>&emsp;</span>;
+												return (
+													<span key={`${index}-${child.mode}`}>
+														&emsp;
+													</span>
+												);
 											} else {
 												return null;
 											}
@@ -141,7 +167,10 @@ export function Serialize({ nodes }: Props): JSX.Element {
 					if (node.children == null) {
 						return null;
 					} else {
-						if (node?.type === "list" && (node as SerializedListNode)?.listType === "check") {
+						if (
+							node?.type === "list" &&
+							(node as SerializedListNode)?.listType === "check"
+						) {
 							for (const item of node.children) {
 								if ("checked" in item) {
 									if (!item?.checked) {
@@ -149,15 +178,23 @@ export function Serialize({ nodes }: Props): JSX.Element {
 									}
 								}
 							}
-							return Serialize({ nodes: node.children as CustomSerializedLexicalNode[] });
+							return Serialize({
+								nodes: node.children as CustomSerializedLexicalNode[],
+							});
 						} else {
-							return Serialize({ nodes: node.children as CustomSerializedLexicalNode[] });
+							return Serialize({
+								nodes: node.children as CustomSerializedLexicalNode[],
+							});
 						}
 					}
 				};
 
 				const serializedChildren =
-					"children" in _node ? serializedChildrenFn(_node as SerializedLexicalNode as SerializedElementNode) : "";
+					"children" in _node
+						? serializedChildrenFn(
+								_node as SerializedLexicalNode as SerializedElementNode
+						  )
+						: "";
 
 				switch (_node.type) {
 					case "linebreak": {
@@ -169,7 +206,10 @@ export function Serialize({ nodes }: Props): JSX.Element {
 					case "heading": {
 						const node = _node as SerializedLexicalNode as SerializedHeadingNode;
 
-						type Heading = Extract<keyof JSX.IntrinsicElements, "h1" | "h2" | "h3" | "h4" | "h5">;
+						type Heading = Extract<
+							keyof JSX.IntrinsicElements,
+							"h1" | "h2" | "h3" | "h4" | "h5" | "h6"
+						>;
 						const Tag = node?.tag as Heading;
 						return <Tag key={index}>{serializedChildren}</Tag>;
 					}
@@ -196,7 +236,10 @@ export function Serialize({ nodes }: Props): JSX.Element {
 						const node = _node as SerializedLexicalNode as SerializedQuoteNode;
 
 						return (
-							<blockquote key={index} className="font-semibold border-l border-indigo-600">
+							<blockquote
+								key={index}
+								className="font-semibold border-l border-indigo-600"
+							>
 								<p>{serializedChildren}</p>
 							</blockquote>
 						);
@@ -210,7 +253,12 @@ export function Serialize({ nodes }: Props): JSX.Element {
 							const rel = fields.newTab ? "noopener noreferrer" : undefined;
 
 							return (
-								<a href={fields.url} key={index} rel={rel} target={fields.newTab ? 'target="_blank"' : undefined}>
+								<a
+									href={fields.url}
+									key={index}
+									rel={rel}
+									target={fields.newTab ? 'target="_blank"' : undefined}
+								>
 									{serializedChildren}
 								</a>
 							);

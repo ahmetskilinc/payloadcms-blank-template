@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { fetchPage } from "../../_api/FetchPage";
-import { fetchPages } from "../../_api/FetchPages";
+import { fetchPage } from "../../_lib/FetchPage";
+import { fetchPages } from "../../_lib/FetchPages";
 import { PageTemplate } from "./page.client";
 import { generateMeta } from "../../_lib/generateMeta";
 

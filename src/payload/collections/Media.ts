@@ -8,7 +8,9 @@ const Media: CollectionConfig = {
 			required: true,
 		},
 	],
-	access: {},
+	access: {
+		read: () => true,
+	},
 	upload: {
 		disableLocalStorage: false,
 		staticURL: "/media",

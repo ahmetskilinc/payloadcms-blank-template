@@ -6,9 +6,7 @@ const Users: CollectionConfig = {
 		singular: "User",
 		plural: "Users",
 	},
-	auth: {
-		useAPIKey: true,
-	},
+	auth: true,
 	admin: {
 		useAsTitle: "firstname",
 	},

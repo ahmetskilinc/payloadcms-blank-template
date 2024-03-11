@@ -1,8 +1,8 @@
 "use client";
 
 import { useLivePreview } from "@payloadcms/live-preview-react";
-import RichText from "../../_components/RichText";
-import { Page } from "../../payload/payload-types";
+import RichText from "../_components/RichText";
+import { Page } from "../payload/payload-types";
 
 export const PageTemplate: React.FC<{ page: Page | null | undefined }> = ({ page }) => {
 	const { data } = useLivePreview({
@@ -11,5 +11,5 @@ export const PageTemplate: React.FC<{ page: Page | null | undefined }> = ({ page
 		initialData: page,
 	});
 
-	return <RichText content={data?.content} />;
+	return <RichText content={data?.content} className="prose" />;
 };
